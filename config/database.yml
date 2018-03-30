@@ -1,0 +1,18 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: simple_panda_development
+
+test:
+  <<: *default
+  database: simple_panda_test
+
+production:
+  <<: *default
+  database: simple_panda_production
+  username: simple_panda
+  password: <%= ENV['SIMPLE_PANDA_DATABASE_PASSWORD'] %>
